@@ -9,7 +9,6 @@
 ?>
 
 <?php
-
 /** PASSWORD */
 require_once 'password.php';
 
@@ -18,12 +17,12 @@ require_once 'database.php';
 
 /** DOMAINS */
 $domains = array(
-    'www.webproject.local'                  => 'LOCAL',
-        'webproject.local'                  => 'LOCAL',
-    'webproject.development.mydomain.dom'   => 'DEV',
-        'quality.mydomain.dom'              => 'QUA',
-    'www.webproject.dom'                    => 'PROD',
-        'webproject.dom'                    => 'PROD',
+    'www.incipit.local'                  => 'LOCAL',
+        'incipit.local'                  => 'LOCAL',
+    'development.incipit.dom'            => 'DEV',
+        'quality.incipit.dom'            => 'QUA',
+    'www.incipit.dom'                    => 'PROD',
+        'incipit.dom'                    => 'PROD',
 );
 
 /** ENVIRONMENT */
@@ -31,7 +30,7 @@ $environment = getEnvironment($domains, $_SERVER['SERVER_NAME']);
 
 /** SITE COMMON URLS */
 $urls = array(
-    'baseUrl' => 'http://webproject.com'
+    'baseUrl' => 'http://incipit.com'
 );
 
 /** ASSET PATH */
@@ -63,8 +62,15 @@ defined('IMG_PATH')
  * DEBUG MODE
  * Activate debug mode only with password
  */
-if ($_COOKIE['DEBUGmodeON'] == $password) {
+if (isset($_COOKIE['DEBUGmodeON']) && $_COOKIE['DEBUGmodeON'] == $password) {
     ini_set('error_reporting', 'true');
     error_reporting(E_ALL|E_STRCT);
 }
+
+/**
+ * MULTIPAGE
+ * Set true if is multipage - false if is onepage
+ */
+defined('MULTIPAGE')
+    or define('MULTIPAGE', true);
 ?>
