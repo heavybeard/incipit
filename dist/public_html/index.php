@@ -17,11 +17,11 @@ require_once('..\resource\config.php');
 require_once('..\resource\template.php');
 
 /**
- * ROUTES
- * Set the current routes
+ * URI
+ * Set the current uri
  */
-$base_url = getCurrentUri();
-$routes = getRoutes();
+defined('CURRENT_URI')
+    or define('CURRENT_URI', getCurrentUri());
 
 /**
  * REQUIRE BASE TEMPLATE

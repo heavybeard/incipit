@@ -7,4 +7,4 @@
  */
 ?>
 
-<?php require_once VIEWS_PATH . '\\' . $VIEW . '.tpl.php'; ?>
+<?php require_once VIEWS_PATH . '\\' . $VIEW . '.tpl.php';?>

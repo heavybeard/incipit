@@ -8,6 +8,10 @@
 ?>
 
 <?php
+/** USEFUL */
+require_once 'useful.php';
+
+
 /**
  * SET ENVIRONMENT
  * Set the current environment
@@ -60,10 +64,9 @@ function getRoutes() {
 
 
 /**
- * THE VIEW
- * Includes the viewS
+ * THE REQUIRED PARTS
+ * Includes the views
  *
- * @param string
  */
 function the_head() {
     require_once TEMPLATES_PATH . '\require\head.tpl.php';
@@ -71,25 +74,38 @@ function the_head() {
 function the_foot() {
     require_once TEMPLATES_PATH . '\require\foot.tpl.php';
 }
-function the_view() {
-    global $templates, $routes;
-    $temp_templates = $templates;
 
-    for ($i = 0; $i < count($routes); $i++) {
-        if (isset($temp_templates[$routes[$i]])) {
-            if (end($routes) == $routes[$i] && isset($temp_templates[$routes[$i]]['root'])) {
-                $temp_templates = $temp_templates[$routes[$i]]['root'];
-                $VIEW = $routes[$i];
-            } else {
-                $temp_templates = $temp_templates[$routes[$i]];
-                $VIEW = $routes[$i];
-            }
+
+/**
+ * THE VIEW
+ * Includes the chosen uri's view
+ * 
+ * @param string
+ */
+function the_view($URI = CURRENT_URI) {
+    global $templates;
+
+    if (isset($templates[$URI])) {
+        if (MULTIPAGE) {
+            $TEMPLATE    = $templates[$URI]['tpl'];
+            $VIEW        = $templates[$URI]['view'];
+
+            require_once TEMPLATES_PATH . '\tpl\\' . $TEMPLATE . '.tpl.php';
         } else {
-            $temp_templates = $templates['404'];
-            $VIEW = '404';
-        }
-    }
+            $templates_exclude = arrayExclude($templates, array('404'));
+            foreach ($templates_exclude as $uri => $info) {
+                $TEMPLATE    = $info['tpl'];
+                $VIEW        = $info['view'];
 
-    require_once TEMPLATES_PATH . '\tpl\\' . $temp_templates . '.tpl.php';
+                require TEMPLATES_PATH . '\tpl\\' . $TEMPLATE . '.tpl.php';
+            }
+        }
+    } else {
+        header("HTTP/1.0 404 Not Found");
+        $TEMPLATE    = $templates['404']['tpl'];
+        $VIEW        = $templates['404']['view'];
+
+        require_once TEMPLATES_PATH . '\tpl\\' . $TEMPLATE . '.tpl.php';
+    }
 }
 ?>
