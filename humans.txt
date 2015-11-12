@@ -1,0 +1,14 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Andrea Cognini  -- Project Leader -- @Heavybeard
+
+# TECHNOLOGY COLOPHON
+
+    SCSS,
+    HTML, CSS, JS
+    PHP,
+    Apache Server Configs,
+    Node.js, Ruby, Grunt,
