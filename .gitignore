@@ -2,6 +2,7 @@
 .sass-cache
 .temp
 *.log
+.cache
 
 # ignore node modules
 node_modules
