@@ -14,7 +14,6 @@
  */
 require_once('..\resource\library\core.php');
 require_once('..\resource\config.php');
-require_once('..\resource\template.php');
 
 /**
  * URI
@@ -26,5 +25,5 @@ defined('CURRENT_URI')
 /**
  * REQUIRE BASE TEMPLATE
  */
-require_once TEMPLATES_PATH . '\base.tpl.php';
+require_once HTML . '\base.tpl.php';
 ?>

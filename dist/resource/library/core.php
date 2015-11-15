@@ -9,7 +9,7 @@
 
 <?php
 /** USEFUL */
-require_once 'useful.php';
+require_once 'plugin/useful.php';
 
 
 /**
@@ -68,55 +68,88 @@ function getRoutes() {
  * Includes the views
  *
  */
-function the_head() {
-    require_once TEMPLATES_PATH . '\require\head.tpl.php';
+function rq_head() {
+    require_once HTML . '\require\head.tpl.php';
 }
-function the_foot() {
-    require_once TEMPLATES_PATH . '\require\foot.tpl.php';
+function rq_foot() {
+    require_once HTML . '\require\foot.tpl.php';
 }
 
 
 /**
- * THE VIEW
- * Includes the chosen uri's view
+ * REQUIRE VIEW
+ * Require the chosen uri's view
  * 
  * @param string
  */
-function the_view($URI = CURRENT_URI) {
-    global $templates;
+function rq_view($URI = CURRENT_URI) {
+    global $pages;
 
-    if (isset($templates[$URI])) {
+    if (isset($pages[$URI])) {
         if (MULTIPAGE) {
-            $TEMPLATE    = $templates[$URI]['tpl'];
-            $VIEW        = $templates[$URI]['view'];
+            $TEMPLATE    = $pages[$URI]['tpl'];
+            $VIEW        = $pages[$URI]['view'];
 
-            require_once TEMPLATES_PATH . '\tpl\\' . $TEMPLATE . '.tpl.php';
+            require_once TEMPLATES_PATH . $TEMPLATE . '.tpl.php';
         } else {
-            $templates_exclude = arrayExclude($templates, array('404'));
-            foreach ($templates_exclude as $uri => $info) {
-                $TEMPLATE    = $info['tpl'];
-                $VIEW        = $info['view'];
+            $pages_exclude = arrayExclude($pages, array('404'));
+            foreach ($pages_exclude as $uri => $page) {
+                $TEMPLATE    = $page['tpl'];
+                $VIEW        = $page['view'];
 
-                require TEMPLATES_PATH . '\tpl\\' . $TEMPLATE . '.tpl.php';
+                require TEMPLATES_PATH . $TEMPLATE . '.tpl.php';
             }
         }
     } else {
         header("HTTP/1.0 404 Not Found");
-        $TEMPLATE    = $templates['404']['tpl'];
-        $VIEW        = $templates['404']['view'];
+        $TEMPLATE    = $pages['404']['tpl'];
+        $VIEW        = $pages['404']['view'];
 
-        require_once TEMPLATES_PATH . '\tpl\\' . $TEMPLATE . '.tpl.php';
+        require_once TEMPLATES_PATH . $TEMPLATE . '.tpl.php';
     }
 }
 
 
 /**
- * THE CONTENT
- * Includes the chosen content
+ * REQUIRE CONTENT
+ * Require the chosen content
  * 
  * @param string
  */
-function the_content($CONTENT) {
-    require_once VIEWS_PATH . '\\' . $CONTENT . '.tpl.php';
+function rq_content($CONTENT) {
+    require_once VIEWS_PATH . $CONTENT . '.tpl.php';
+}
+
+
+/**
+ * THE SITE
+ * Includes the chosen site info
+ *
+ * @param string
+ */
+function the_site($INFO) {
+    global $commons;
+
+    echo $commons[$INFO];
+}
+
+/**
+ * THE TITLE
+ * Includes the chosen uri's title
+ *
+ * @param string
+ */
+function the_title($URI = CURRENT_URI) {
+    global $pages, $commons;
+
+    if (isset($pages[$URI])) {
+        if (MULTIPAGE) {
+            echo $pages[$URI]['title'] . ' ' . $commons['separator'] . ' ';
+        } else {
+            echo '';
+        }
+    } else {
+        echo $pages['404']['title'] . ' ' . $commons['separator'] . ' ';
+    }
 }
 ?>
