@@ -108,4 +108,15 @@ function the_view($URI = CURRENT_URI) {
         require_once TEMPLATES_PATH . '\tpl\\' . $TEMPLATE . '.tpl.php';
     }
 }
+
+
+/**
+ * THE CONTENT
+ * Includes the chosen content
+ * 
+ * @param string
+ */
+function the_content($CONTENT) {
+    require_once VIEWS_PATH . '\\' . $CONTENT . '.tpl.php';
+}
 ?>

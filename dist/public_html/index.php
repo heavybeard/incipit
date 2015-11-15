@@ -12,7 +12,7 @@
  * REQUIRED
  * Includes functional required files
  */
-require_once('..\resource\library\functions.php');
+require_once('..\resource\library\core.php');
 require_once('..\resource\config.php');
 require_once('..\resource\template.php');
 
