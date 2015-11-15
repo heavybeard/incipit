@@ -19,11 +19,11 @@ require_once 'configuration/password.php';
 /** DATABASE */
 require_once 'configuration/database.php';
 
-/** SITEINFO */
-require_once 'configuration/site-info.php';
-
 /** MODULE */
 require_once 'configuration/module.php';
+
+/** SITEINFO */
+require_once 'configuration/site-info.php';
 
 /**
  * DEBUG MODE

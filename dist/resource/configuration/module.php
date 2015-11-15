@@ -18,15 +18,21 @@ defined('TEMPLATES_PATH')
 defined('CONTENTS_PATH')
     or define('VIEWS_PATH', RESOURCE . '\html\content');
 
-/** PUBLIC_HTML */
+/** DEFAULT PUBLIC_HTML */
 defined('CSS_PATH')
-    or define('CSS_PATH', '/asset/style');
+    or define('CSS_PATH', '/asset/style/');
 defined('JS_PATH')
-    or define('JS_PATH', '/asset/script');
+    or define('JS_PATH', '/asset/script/');
 defined('JSON_PATH')
-    or define('JSON_PATH', '/asset/json');
+    or define('JSON_PATH', '/asset/json/');
 defined('IMG_PATH')
-    or define('IMG_PATH', '/asset/image');
+    or define('IMG_PATH', '/asset/image/');
+
+/** WEBAPP PUBLIC_HTML */
+defined('WEBAPP_ICON_PATH')
+    or define('WEBAPP_ICON_PATH', '/asset/image/wepapp/icon/');
+defined('WEBAPP_STARTUP_PATH')
+    or define('WEBAPP_STARTUP_PATH', '/asset/image/webapp/startup/');
 
 /**
  * MULTIPAGE

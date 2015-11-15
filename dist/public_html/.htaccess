@@ -6,9 +6,6 @@
     RewriteRule ^ index.php [QSA,L]
 </IfModule>
 
-# 404 Error
-ErrorDocument 404 /404
-
 # GZIP
 <IfModule mod_filter.c>
     AddOutputFilterByType DEFLATE "application/atom+xml" \
