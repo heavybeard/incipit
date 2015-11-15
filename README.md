@@ -42,7 +42,7 @@ In Windows you can find the file in this path `C:\Windows\System32\drivers\etc\h
 ### Vhost in Web Server
 In Windows with XAMPP you can find the file in this path `C:\xampp\apache\conf\extra\httpd-vhosts.conf `
 ```
-## HEAVYBEARD
+## WEBPROJECT
 <VirtualHost www.webproject.dom:80>
     DocumentRoot "C:/xampp/htdocs/webprojectfolder/dist/public_html"
     ServerName www.webproject.dom
@@ -62,3 +62,10 @@ In Windows with XAMPP you can find the file in this path `C:\xampp\apache\conf\e
     </Directory>
 </VirtualHost>
 ```
+
+## SEO
+### Schema.org
+#### JSON+LD
+For create the JSON+LD for better SEO, use this [simple tool](http://json-ld.org/playground/)
+#### Open Graph
+For create the Open Graph structure for better SEO and social sharing, use this [simple tool](http://www.metataggenerator.org/open-graph-meta-tags/)
