@@ -20,14 +20,11 @@ The Grunt file's architeture is composed by
 │   ├── imagemin.js
 │   ├── watch.js
 │   └── notify.js
-│
 ├── node_modules
 │   ├── module 1
 │   ├── ...
 │   └── module n
-│
 ├── package.json
-│
 └── gruntfile.js
 ```
 

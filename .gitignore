@@ -10,3 +10,4 @@ node_modules
 # ignore files with sensible data (versionate with .secret)
 sftp-config.json
 database.php
+password.php
