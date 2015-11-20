@@ -15,10 +15,10 @@
 rq_head();
 
 /**
- * THE VIEW
- * Includes the view by routes defined in index.php
+ * THE PAGE
+ * Includes the page by uri defined in index.php
  */
-rq_view();
+rq_page();
 
 /**
  * FOOT

@@ -64,8 +64,8 @@ $commons = array(
 $pages = array(
     /** Index */
     '/'                    => array(
-        'tpl' => 'blank',
-        'view' => 'index',
+        'template' => 'blank',
+        'content' => 'index',
         'title' => 'Homepage',
         'description' => 'This framework is the homepage',
         'opengraph' => array(
@@ -87,28 +87,28 @@ $pages = array(
 
     /** Parent */
     '/parent'             => array(
-        'tpl' => 'blank',
-        'view' => 'parent',
+        'template' => 'blank',
+        'content' => 'parent',
         'title' => 'Parent',
         'description' => 'This is the parent page',
     ),
     '/parent/child'       => array(
-        'tpl' => 'blank',
-        'view' => 'child',
+        'template' => 'blank',
+        'content' => 'child',
         'title' => 'Child',
         'description' => 'This is the child page',
     ),
     '/parent/child/depth' => array(
-        'tpl' => 'blank',
-        'view' => 'depth',
+        'template' => 'blank',
+        'content' => 'depth',
         'title' => 'Depth',
         'description' => 'This is the depth page',
     ),
 
     /** Errors */
     '404'                 => array(
-        'tpl' => 'blank',
-        'view' => '404',
+        'template' => 'blank',
+        'content' => '404',
         'title' => 'Errore 404',
         'description' => 'This is the 404 error page',
     ),

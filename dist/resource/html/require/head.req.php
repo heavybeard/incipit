@@ -19,7 +19,7 @@
 
         <?php the_opengraph(); ?>
 
-        <?php rq_part('webapp'); ?>
+        <?php rq_part('require', 'webapp'); ?>
     </head>
     <body>
         <div id="container">

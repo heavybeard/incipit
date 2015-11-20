@@ -72,43 +72,43 @@ function rq_head() {
     if (is_404()) {
         header('HTTP/1.0 404 Not Found');
     }
-    require_once HTML . '\require\head.tpl.php';
+    require_once HTML . '\require\head.req.php';
 }
 function rq_foot() {
-    require_once HTML . '\require\foot.tpl.php';
+    require_once HTML . '\require\foot.req.php';
 }
-function rq_part($PART) {
-    require_once HTML . '\require\part\\' . $PART . '.tpl.php';
+function rq_part($TYPE_PATH, $PART) {
+    require_once HTML . '\\' . $TYPE_PATH . '\part\\' . $PART . '.part.php';
 }
 
 
 /**
- * REQUIRE VIEW
- * Require the chosen uri's view
+ * REQUIRE PAGE
+ * Require the chosen uri's page
  * 
  * @param string
  */
-function rq_view($URI = CURRENT_URI) {
+function rq_page($URI = CURRENT_URI) {
     global $pages;
 
     if (isset($pages[$URI])) {
         if (MULTIPAGE) {
-            $TEMPLATE    = $pages[$URI]['tpl'];
-            $VIEW        = $pages[$URI]['view'];
+            $TEMPLATE    = $pages[$URI]['template'];
+            $CONTENT     = $pages[$URI]['content'];
 
             require_once TEMPLATES_PATH . $TEMPLATE . '.tpl.php';
         } else {
             $pages_exclude = arrayExclude($pages, array('404'));
             foreach ($pages_exclude as $uri => $page) {
-                $TEMPLATE    = $page['tpl'];
-                $VIEW        = $page['view'];
+                $TEMPLATE    = $page['template'];
+                $CONTENT     = $page['content'];
 
                 require TEMPLATES_PATH . $TEMPLATE . '.tpl.php';
             }
         }
     } else {
-        $TEMPLATE    = $pages['404']['tpl'];
-        $VIEW        = $pages['404']['view'];
+        $TEMPLATE    = $pages['404']['template'];
+        $CONTENT     = $pages['404']['content'];
 
         require_once TEMPLATES_PATH . $TEMPLATE . '.tpl.php';
     }
@@ -122,7 +122,18 @@ function rq_view($URI = CURRENT_URI) {
  * @param string
  */
 function rq_content($CONTENT) {
-    require_once VIEWS_PATH . $CONTENT . '.tpl.php';
+    require_once CONTENTS_PATH . $CONTENT . '.cont.php';
+}
+
+
+/**
+ * REQUIRE VIEW
+ * Require the chosen content
+ * 
+ * @param string
+ */
+function rq_view($VIEW) {
+    require_once VIEWS_PATH . $VIEW . '.view.php';
 }
 
 
