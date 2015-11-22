@@ -8,30 +8,40 @@
 ?>
 
 <?php
+/**
+ * REQUIRE PLUGIN
+ * ===========================================================================
+ */
+
 /** USEFUL */
 require_once 'plugin/useful.php';
 
 
+
 /**
- * SET ENVIRONMENT
+ * GET INFORMATIONS
+ * ===========================================================================
+ */
+
+
+/**
+ * GET ENVIRONMENT
  * Set the current environment
  *
- * @param string
- * @return string
+ * @param array $all_domain list of possible server name
+ * @param string $server_name the chosen server name
+ * @return string the environment
  */
 function getEnvironment($all_domain, $server_name) {
-    $d = $all_domain;
-    $s_n = $server_name;
-
-    return $d[$s_n];
+    return $all_domain[$server_name];
 }
 
 
 /**
  * GET CURRENT URI
- * The following function will strip the script name from URL
+ * Strip the script name from URL
  *
- * @return string
+ * @return string the current uri
  */
 function getCurrentUri() {
     $basepath = implode('/', array_slice(explode('/', $_SERVER['SCRIPT_NAME']), 0, -1)) . '/';
@@ -46,13 +56,12 @@ function getCurrentUri() {
 
 
 /**
- * GET CURRENT URI
+ * GET CURRENT ROUTES
  * Explode in array the baseurl by '/' char
  *
- * @param string
- * @return array
+ * @return array the array of path
  */
-function getRoutes() {
+function getCurrentRoutes() {
     global $base_url;
     $routes = explode('/', $base_url);
 
@@ -63,10 +72,16 @@ function getRoutes() {
 }
 
 
+
 /**
- * THE REQUIRED PARTS
- * Includes the views
- *
+ * REQUIREDS
+ * ===========================================================================
+ */
+
+
+/**
+ * REQUIRED HEAD
+ * Require the head part
  */
 function rq_head() {
     if (is_404()) {
@@ -74,11 +89,36 @@ function rq_head() {
     }
     require_once HTML . '\require\head.req.php';
 }
+
+
+/**
+ * REQUIRE PAGE
+ * Require the foot part
+ */
 function rq_foot() {
     require_once HTML . '\require\foot.req.php';
 }
-function rq_part($TYPE_PATH, $PART) {
-    require_once HTML . '\\' . $TYPE_PATH . '\part\\' . $PART . '.part.php';
+
+
+/**
+ * REQUIRE CONTENT
+ * Require the chosen content
+ * 
+ * @param string
+ */
+function rq_content($CONTENT) {
+    require_once CONTENTS_PATH . $CONTENT . '.cont.php';
+}
+
+
+/**
+ * REQUIRE VIEW
+ * Require the chosen content
+ * 
+ * @param string
+ */
+function rq_view($VIEW) {
+    require_once VIEWS_PATH . $VIEW . '.view.php';
 }
 
 
@@ -86,7 +126,19 @@ function rq_part($TYPE_PATH, $PART) {
  * REQUIRE PAGE
  * Require the chosen uri's page
  * 
- * @param string
+ * @param string $TYPE_PATH the html subfolder type ['view', 'required', 'template']
+ * @param string $PATH the name of file
+ */
+function rq_part($TYPE_PATH, $PART) {
+    require_once HTML . '\\' . $TYPE_PATH . '\part\\' . $PART . '.part.php';
+}
+
+
+/**
+ * REQUIRE PAGE
+ * Require the chosen uri's page through templates
+ * 
+ * @param string $URI the chosen uri [default is the current uri]
  */
 function rq_page($URI = CURRENT_URI) {
     global $pages;
@@ -115,32 +167,19 @@ function rq_page($URI = CURRENT_URI) {
 }
 
 
-/**
- * REQUIRE CONTENT
- * Require the chosen content
- * 
- * @param string
- */
-function rq_content($CONTENT) {
-    require_once CONTENTS_PATH . $CONTENT . '.cont.php';
-}
-
 
 /**
- * REQUIRE VIEW
- * Require the chosen content
- * 
- * @param string
+ * STATEMENT
+ * ===========================================================================
  */
-function rq_view($VIEW) {
-    require_once VIEWS_PATH . $VIEW . '.view.php';
-}
 
 
 /**
  * IS 404
+ * Return if the chosen uri is 404
  *
- * @param string
+ * @param string $URI the chosen uri [default is the current uri]
+ * @return bool
  */
 function is_404($URI = CURRENT_URI) {
     global $pages;
@@ -154,10 +193,35 @@ function is_404($URI = CURRENT_URI) {
 
 
 /**
+ * IS PAGE
+ * Return if the chosen uri is the current uri
+ *
+ * @param string $URI the chosen uri [default is the current uri]
+ * @return bool
+ */
+function is_page($URI) {
+    global $pages;
+
+    if (isset($pages[$URI]) && $URI = CURRENT_URI) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
+
+/**
+ * ECHO
+ * ===========================================================================
+ */
+
+
+/**
  * THE SITE
  * Echo the chosen site info
  *
- * @param string
+ * @param string $INFO the site info key
  */
 function the_site($INFO) {
     global $commons;
@@ -170,7 +234,7 @@ function the_site($INFO) {
  * THE TITLE
  * Echo the chosen uri's title
  *
- * @param string
+ * @param string $URI the chosen uri [default is the current uri]
  */
 function the_title($URI = CURRENT_URI) {
     global $pages, $commons;
@@ -193,7 +257,7 @@ function the_title($URI = CURRENT_URI) {
  * THE DESCRIPTION
  * Echo the chosen uri's description
  *
- * @param string
+ * @param string $URI the chosen uri [default is the current uri]
  */
 function the_description($URI = CURRENT_URI) {
     global $pages, $commons;
@@ -217,7 +281,7 @@ function the_description($URI = CURRENT_URI) {
  * THE OPENGRAPH
  * Echo the chosen uri's open graph
  *
- * @param string
+ * @param string $URI the chosen uri [default is the current uri]
  */
 function the_opengraph($URI = CURRENT_URI) {
     global $pages, $commons;
@@ -243,7 +307,8 @@ function the_opengraph($URI = CURRENT_URI) {
  * THE WEBAPP
  * Echo the chosen webapp data related to chosen uri's
  *
- * @param string
+ * @param string $WEBAPP the webapp info key
+ * @param string $URI the chosen uri [default is the current uri]
  */
 function the_webapp($WEBAPP, $URI = CURRENT_URI) {
     global $pages, $commons;

@@ -12,10 +12,10 @@
  * ARRAY DEPTH
  * How deep is the array
  *
- * @param array
- * @return num
+ * @param array $array the chosen array
+ * @return int the number of depth
  */
-function array_depth(array $array) {
+function array_depth(Array $array) {
     $max_depth = 1;
 
     foreach ($array as $value) {
@@ -36,8 +36,9 @@ function array_depth(array $array) {
  * ARRAY EXCLUDE
  * Exclude the given keys from array
  *
- * @param array, [key1, ..., keyN]
- * @return array
+ * @param array $array
+ * @param array $excludeKeys a list of string for exclude key->value from array
+ * @return array the array with excluded key
  */
 function arrayExclude($array, Array $excludeKeys) {
     foreach($excludeKeys as $key) {

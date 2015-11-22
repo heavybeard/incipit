@@ -10,7 +10,7 @@
 <?php
 /**
  * HEAD
- * Includes common head
+ * Require the head for starting
  */
 rq_head();
 
@@ -22,7 +22,7 @@ rq_page();
 
 /**
  * FOOT
- * Includes common foot
+ * Require the foot for closing
  */
 rq_foot();
 ?>

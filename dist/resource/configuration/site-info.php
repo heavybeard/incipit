@@ -59,7 +59,7 @@ $commons = array(
 
 /**
  * PAGES
- * Associated route => template
+ * Associated uri => infos
  */
 $pages = array(
     /** Index */
