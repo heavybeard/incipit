@@ -9,7 +9,7 @@ module.exports = function (grunt) {
 
     /**
      * LOAD PLUGINS
-     * Load all plugins installed
+     * Load all plugins installed in grunt folder
      */
     require('load-grunt-config')(grunt);
 

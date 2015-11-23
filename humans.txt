@@ -8,7 +8,8 @@
 # TECHNOLOGY COLOPHON
 
     SCSS,
-    HTML, CSS, JS
+    HTML, CSS, JS, JSON
     PHP,
     Apache Server Configs,
     Node.js, Ruby, Grunt,
+    SEO Ready, Schema.org

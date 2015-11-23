@@ -9,7 +9,7 @@ module.exports = {
             enabled: true,
             success: true,
             title: 'Build complete',
-            message: '<%= pkg.name %> build finished successfully.',
+            message: 'Build finished successfully.',
         },
     },
 };
