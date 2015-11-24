@@ -13,14 +13,7 @@ module.exports = {
     },
     compass: {
         files: ['source/style/**/*.{scss,sass}'],
-        tasks: ['compass:dev'],
-        options: {
-            livereload: true
-        },
-    },
-    css: {
-        files: ['source/.temp/*.css'],
-        tasks: ['combine_mq'],
+        tasks: ['compass:dev', 'combine_mq'],
         options: {
             livereload: true
         },
