@@ -104,7 +104,7 @@ function rq_foot() {
  * REQUIRE CONTENT
  * Require the chosen content
  * 
- * @param string
+ * @param string $CONTENT file name of content
  */
 function rq_content($CONTENT) {
     require_once CONTENTS_PATH . $CONTENT . '.cont.php';
@@ -115,10 +115,12 @@ function rq_content($CONTENT) {
  * REQUIRE VIEW
  * Require the chosen content
  * 
- * @param string
+ * @param string $VIEW file name of view
+ * @param array or string $CONTENTS content of the included view
  */
-function rq_view($VIEW) {
-    require_once VIEWS_PATH . $VIEW . '.view.php';
+function rq_view($VIEW, $CONTENTS) {
+    $THIS_VIEW_CONTENTS = $CONTENTS;
+    include VIEWS_PATH . $VIEW . '.view.php';
 }
 
 
@@ -130,7 +132,7 @@ function rq_view($VIEW) {
  * @param string $PATH the name of file
  */
 function rq_part($TYPE_PATH, $PART) {
-    require_once HTML . '/' . $TYPE_PATH . '/part/' . $PART . '.part.php';
+    include HTML . '/' . $TYPE_PATH . '/part/' . $PART . '.part.php';
 }
 
 
