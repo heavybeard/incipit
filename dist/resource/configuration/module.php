@@ -10,15 +10,15 @@
 <?php
 /** RESOURCE */
 defined('LIBRARY_PATH')
-    or define('LIBRARY_PATH', RESOURCE . '\library\\');
+    or define('LIBRARY_PATH', RESOURCE . '/library/');
 defined('HTML')
-    or define('HTML', RESOURCE . '\html\\');
+    or define('HTML', RESOURCE . '/html/');
 defined('TEMPLATES_PATH')
-    or define('TEMPLATES_PATH', RESOURCE . '\html\template\\');
+    or define('TEMPLATES_PATH', RESOURCE . '/html/template/');
 defined('CONTENTS_PATH')
-    or define('CONTENTS_PATH', RESOURCE . '\html\content\\');
+    or define('CONTENTS_PATH', RESOURCE . '/html/content/');
 defined('VIEWS_PATH')
-    or define('VIEWS_PATH', RESOURCE . '\html\view\\');
+    or define('VIEWS_PATH', RESOURCE . '/html/view/');
 
 /** DEFAULT PUBLIC_HTML */
 defined('CSS_PATH')

@@ -12,8 +12,8 @@
  * REQUIRED
  * Includes functional required files
  */
-require_once('..\resource\library\core.php');
-require_once('..\resource\config.php');
+require_once dirname(dirname(__FILE__)) . '/resource/library/core.php';
+require_once dirname(dirname(__FILE__)) . '/resource/config.php';
 
 /**
  * URI
@@ -25,5 +25,5 @@ defined('CURRENT_URI')
 /**
  * REQUIRE BASE TEMPLATE
  */
-require_once HTML . '\base.tpl.php';
+require_once HTML . 'base.tpl.php';
 ?>

@@ -10,8 +10,9 @@
 
 <?php
 /** RESOURCE PATH */
+$dirname = dirname(__FILE__);
 defined('RESOURCE')
-    or define('RESOURCE', dirname(__FILE__));
+    or define('RESOURCE', $dirname);
 
 /** PASSWORD */
 require_once 'configuration/password.php';

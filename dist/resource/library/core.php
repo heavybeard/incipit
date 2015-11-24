@@ -87,7 +87,7 @@ function rq_head() {
     if (is_404()) {
         header('HTTP/1.0 404 Not Found');
     }
-    require_once HTML . '\require\head.req.php';
+    require_once HTML . 'require/head.req.php';
 }
 
 
@@ -96,7 +96,7 @@ function rq_head() {
  * Require the foot part
  */
 function rq_foot() {
-    require_once HTML . '\require\foot.req.php';
+    require_once HTML . 'require/foot.req.php';
 }
 
 
@@ -130,7 +130,7 @@ function rq_view($VIEW) {
  * @param string $PATH the name of file
  */
 function rq_part($TYPE_PATH, $PART) {
-    require_once HTML . '\\' . $TYPE_PATH . '\part\\' . $PART . '.part.php';
+    require_once HTML . '/' . $TYPE_PATH . '/part/' . $PART . '.part.php';
 }
 
 
