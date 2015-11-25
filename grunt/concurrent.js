@@ -14,7 +14,6 @@ module.exports = {
         'newer:compass:dev',
     ],
     dev2: [
-        'newer:uglify:all',
         'newer:combine_mq',
     ],
 

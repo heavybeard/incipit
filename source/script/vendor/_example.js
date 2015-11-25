@@ -1,10 +1,4 @@
 /**
- * SCRIPTS
- * Include here all core scripts
- */
-var script;
-
-/**
  * VENDOR
  * @description Add short description about content
  * @see http://

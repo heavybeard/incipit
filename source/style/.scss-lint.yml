@@ -1,4 +1,4 @@
-exclude: 'vendors'
+exclude: 'vendor'
 
 linters:
   BorderZero:

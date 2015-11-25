@@ -6,14 +6,14 @@
 module.exports = {
     js: {
         files: ['source/script/**/*.js'],
-        tasks: ['uglify:dev'],
+        tasks: ['uglify:dev', 'notify'],
         options: {
             livereload: true
         },
     },
     compass: {
         files: ['source/style/**/*.{scss,sass}'],
-        tasks: ['compass:dev', 'combine_mq'],
+        tasks: ['compass:dev', 'combine_mq', 'notify'],
         options: {
             livereload: true
         },
