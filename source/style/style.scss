@@ -1,11 +1,4 @@
 //
-// COMPASS
-// ---------------------------------------------------------------------------
-@import 'compass/reset';
-@import 'compass/css3';
-@import 'compass/css3/selection';
-
-//
 // MODULES
 // ---------------------------------------------------------------------------
 @import 'module/example';
@@ -13,6 +6,7 @@
 //
 // VENDORS
 // ---------------------------------------------------------------------------
+@import 'vendor/reset';
 @import 'vendor/example';
 
 //
