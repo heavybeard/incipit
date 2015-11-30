@@ -11,5 +11,5 @@
     HTML, CSS, JS, JSON
     PHP,
     Apache Server Configs,
-    Node.js, Ruby, Grunt,
+    Node.js, Ruby, Gulp,
     SEO Ready, Schema.org
