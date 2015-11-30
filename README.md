@@ -1,6 +1,6 @@
 # incipit
 This framework is created for init a new web standard project.
-GRUNT and SCSS frontend based.
+GULP and SCSS frontend based.
 PHP and MySQL backend base.
 
 > **incipit**
