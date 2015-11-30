@@ -7,7 +7,8 @@ var gulp = require('gulp'),
     config = require('../../config'),
     maps = require('gulp-sourcemaps'),
     concat = require('gulp-concat'),
-    livereload = require('gulp-livereload');
+    livereload = require('gulp-livereload'),
+    notify = require("gulp-notify");
 
 gulp.task('concatScript', function () {
     return gulp.src([
@@ -16,6 +17,7 @@ gulp.task('concatScript', function () {
         ])
         .pipe(maps.init())
         .pipe(concat('script.js'))
+        .pipe(notify('Script concatenated'))
         .pipe(maps.write(config.path.sourcemap))
         .pipe(gulp.dest(config.path.script.asset))
         .pipe(livereload());
