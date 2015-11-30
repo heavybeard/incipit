@@ -8,24 +8,30 @@ PHP and MySQL backend base.
 > In the codes, initial word of the formula
 > that is usually placed at the beginning of a work or part thereof
 
-## Grunt
-The Grunt file's architeture is composed by
+## Gulp
+The Gulp file's architeture is composed by
 ```
 ::ROOT
-├── grunt
-│   ├── aliases.js
-│   ├── concurrent.js
-│   ├── compass.js
-│   ├── uglify.js
-│   ├── imagemin.js
-│   ├── watch.js
-│   └── notify.js
+├── gulp
+│   ├── task
+│   │   ├── base
+│   │   │   ├── compileStyle.js
+│   │   │   ├── concatScript.js
+│   │   │   ├── optimizeImage.js
+│   │   │   └── uglifyScript.js
+│   │   ├── useful
+│   │   │   ├── clean.js
+│   │   │   └── watch.js
+│   │   ├── default.js
+│   │   ├── dev.js
+│   │   └── dist.js
+│   └── config.js
 ├── node_modules
 │   ├── module 1
 │   ├── ...
 │   └── module n
 ├── package.json
-└── gruntfile.js
+└── gulpfile.js
 ```
 
 ## Virtual Host
