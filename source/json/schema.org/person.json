@@ -1,8 +1,0 @@
-{
-    "@context": "http://schema.org/",
-    "@type": "Person",
-    "name": "Name Lastname",
-    "jobTitle": "Job Title",
-    "telephone": "+01 234-56789",
-    "url": "http://www.webproject.dom"
-}

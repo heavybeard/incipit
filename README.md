@@ -67,8 +67,5 @@ In Windows with XAMPP you can find the file in this path `C:\xampp\apache\conf\e
 ```
 
 ## SEO
-### Schema.org
-#### JSON+LD
-For create the JSON+LD for better SEO, use this [simple tool](http://json-ld.org/playground/)
-#### Open Graph
+### Open Graph
 For create the Open Graph structure for better SEO and social sharing, use this [simple tool](http://www.metataggenerator.org/open-graph-meta-tags/)
