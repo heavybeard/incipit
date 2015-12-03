@@ -1,10 +1,22 @@
-# All path routs on index.php
+# All path routes on index.php
 <IfModule mod_rewrite.c>
     Options -MultiViews
     RewriteEngine On
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [QSA,L]
 </IfModule>
+
+# WEBP
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTP_ACCEPT} image/webp
+    RewriteCond %{DOCUMENT_ROOT}/$1.webp -f
+    RewriteRule (.+)\.(jpe?g|png)$ $1.webp [T=image/webp,E=accept:1]
+</IfModule>
+<IfModule mod_headers.c>
+    Header append Vary Accept env=REDIRECT_accept
+</IfModule>
+AddType image/webp .webp
 
 # GZIP
 <IfModule mod_filter.c>
