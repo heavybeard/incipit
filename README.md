@@ -59,7 +59,7 @@ In Windows with XAMPP you can find the file in this path `C:\xampp\apache\conf\e
     DocumentRoot "C:/xampp/htdocs/webprojectfolder/dist/public_html"
     ServerName webproject.dom
     ServerAlias webproject.dom
-    <Directory "C:/xampp/htdocs/websitefolder/dist/public_html">
+    <Directory "C:/xampp/htdocs/webprojectfolder/dist/public_html">
         Order allow,deny
         Allow from all
     </Directory>
