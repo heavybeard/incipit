@@ -8,5 +8,6 @@ var gulp = require('gulp');
 gulp.task('dev', [
     'concatScript',
     'compileStyle',
-    'optimizeImage'
+    'optimizeImage',
+    'webpImage'
 ]);
