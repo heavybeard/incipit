@@ -14,7 +14,10 @@ gulp.task('webpImage', function () {
         .pipe(imageminWebp({
             quality: 50
         })())
-        .pipe(notify('Image converted in webp'))
+        .pipe(notify({
+            title: '<%= file.relative %>',
+            message: 'Image converted in webp'
+        }))
         .pipe(gulp.dest(config.path.image.asset))
         .pipe(livereload());
 });

@@ -17,7 +17,10 @@ gulp.task('concatScript', function () {
         ])
         .pipe(maps.init())
         .pipe(concat('script.js'))
-        .pipe(notify('Script concatenated'))
+        .pipe(notify({
+            title: '<%= file.relative %>',
+            message: 'Script concatenated'
+        }))
         .pipe(maps.write(config.path.sourcemap))
         .pipe(gulp.dest(config.path.script.asset))
         .pipe(livereload());

@@ -17,7 +17,10 @@ gulp.task('compileStyle', function () {
         .pipe(maps.init())
         .pipe(sass())
         .pipe(combine())
-        .pipe(notify('Style compiled'))
+        .pipe(notify({
+            title: '<%= file.relative %>',
+            message: 'Style compiled',
+        }))
         .pipe(autoprefixer('last 2 versions'))
         .pipe(maps.write(config.path.sourcemap))
         .pipe(gulp.dest(config.path.style.asset))
