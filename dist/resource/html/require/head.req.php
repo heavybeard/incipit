@@ -10,7 +10,8 @@
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml" lang="it">
     <head>
-        <link rel="stylesheet" type="text/css" href="<?= CSS_PATH ?>style.css">
+        <link rel="stylesheet" type="text/css" href="<?= CSS_PATH ?>style.css" media="none">
+        <noscript><link rel="stylesheet" type="text/css" href="<?= CSS_PATH ?>style.css"></noscript>
 
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />

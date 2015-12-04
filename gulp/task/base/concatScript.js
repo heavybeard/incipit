@@ -13,6 +13,7 @@ var gulp = require('gulp'),
 gulp.task('concatScript', function () {
     return gulp.src([
             config.path.script.source + '/vendor/_picturefill.js',
+            config.path.script.source + '/base/_async-style.js',
             config.path.script.source + '/script.js',
         ])
         .pipe(maps.init())
