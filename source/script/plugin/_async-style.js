@@ -4,7 +4,11 @@
  * @see http://keithclark.co.uk/articles/loading-css-without-blocking-render/
  * @param DOM el link[rel="stylesheet"] to download
  */
-asyncStyle = function (el) {
-    if (el.media == 'none')
-        el.media = el.getAttribute('data-media') || 'all';
+
+var asyncStyle = function (element) {
+    'use strict';
+    
+    if (element.media === 'none') {
+        element.media = element.getAttribute('data-media') || 'all';
+    }
 };

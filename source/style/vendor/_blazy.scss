@@ -1,0 +1,17 @@
+//
+// EXAMPLE
+// Short description about the file contents
+// Add link about vendor project if exist
+//
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+.b-lazy {
+    max-width: 100%;
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
+
+    &.b-loaded {
+        opacity: 1;
+    }
+}
