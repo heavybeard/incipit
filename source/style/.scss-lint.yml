@@ -1,4 +1,4 @@
-exclude: 'vendor'
+exclude: 'vendor/*'
 
 linters:
   BorderZero:
@@ -7,3 +7,6 @@ linters:
   Indentation:
     severity: warning
     width: 4
+
+  PropertySortOrder:
+    enabled: false

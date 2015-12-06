@@ -10,6 +10,11 @@ gulp.task('dist', [
 ], function () {
     gulp.start([
         'uglifyScript',
-        'compileStyle'
-    ]);
+        'compileStyle',
+        'optimizeImage'
+    ], function () {
+        gulp.start([
+            'webpImage'
+        ]);
+    });
 });

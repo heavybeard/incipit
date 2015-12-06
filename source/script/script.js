@@ -47,24 +47,18 @@ function Incipit(extend) {
     };
 
     /**
-     * LAZY LOAD IMAGE
-     * @description Lazy loading image
-     */
-    var lazyLoadImage = function () {
-        var bLazy = new Blazy({ 
-            selector: 'img'
-        });
-    };
-
-    /**
      * INIT
      * @description Functions for init the application
      */
     this.init = function () {
         downloadStyle(option.linkSelector);
         pictureFill();
+        zoomjs();
+        lazySizes.init();
     };
 
     /** INIT */
     this.init();
 }
+
+var incipit = new Incipit();

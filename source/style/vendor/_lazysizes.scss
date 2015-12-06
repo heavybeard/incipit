@@ -1,0 +1,23 @@
+//
+// LAZYSIZEZ
+// lazysizes adds the class lazyloading while the images are loading
+// and the class lazyloaded as soon as the image is loaded.
+// This can be used to add unveil effects
+// https://github.com/aFarkas/lazysizes
+//
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+.lazyload {
+    opacity: 0;
+
+    &ing {
+        opacity: 0;
+    }
+
+    &ed {
+        opacity: 1;
+        padding-bottom: 0 !important;
+        transition: opacity .3s ease-in-out;
+    }
+}
