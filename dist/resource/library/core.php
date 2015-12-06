@@ -15,6 +15,8 @@
 
 /** USEFUL */
 require_once 'plugin/useful.php';
+/** IMAGES */
+require_once 'plugin/images.php';
 
 
 
