@@ -20,18 +20,20 @@ function Incipit(extend) {
      */
     var option = {
         /** string */
-        linkSelector: e.linkSelector || 'link[rel="stylesheet"]'
+        stylesheetSelector: e.stylesheetSelector || 'link[rel="stylesheet"]',
+        /** string */
+        trackerSelector: e.trackerSelector || '[data-event-category]',
     };
 
     /**
      * DOWNLOAD STYLE
      * @description Download all style files
-     * @param string stylesheetSelector
+     * @param string Selector
      */
-    var downloadStyle = function (stylesheetSelector) {
-        var DOMstyle = document.querySelectorAll(stylesheetSelector);
+    var downloadStyle = function (selector) {
+        var DOMstyles = document.querySelectorAll(selector);
 
-        Array.prototype.forEach.call(DOMstyle, function (element, index) {
+        Array.prototype.forEach.call(DOMstyles, function (element, index) {
             window.addEventListener('load', function () {
                 asyncStyle(element);
             }, false);
@@ -47,14 +49,45 @@ function Incipit(extend) {
     };
 
     /**
+     * GA EVENT TRACK
+     * @description Track on GA the events
+     * @param string selector
+     */
+    var trackEvent = function (selector) {
+        var DOMtrackers = document.querySelectorAll(selector);
+
+        Array.prototype.forEach.call(DOMtrackers, function (element, index) {
+            element.addEventListener('click', function () {
+                gaEventTrack(element);
+            }, false);
+        });
+    };
+
+    /**
+     * GA EVENT TRACK SCROLL
+     */
+    var trackEventScroll = function () {
+        window.addEventListener('scroll', function() {
+            var heightPercent = document.documentElement.scrollTop || document.body.scrollTop / ((document.documentElement.scrollHeight || document.body.scrollHeight) - document.documentElement.clientHeight) * 100 | 0;
+            if (heightPercent % 10 === 0) {
+                gaEventTrack(document.body, {
+                    label: heightPercent
+                });
+            }
+        });
+    };
+
+    /**
      * INIT
      * @description Functions for init the application
      */
     this.init = function () {
-        downloadStyle(option.linkSelector);
+        downloadStyle(option.stylesheetSelector);
         pictureFill();
         zoomjs();
         lazySizes.init();
+        trackEvent(option.trackerSelector);
+        trackEventScroll();
     };
 
     /** INIT */
