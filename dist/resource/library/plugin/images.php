@@ -14,7 +14,7 @@
  * @param array sources Array of Object of attribute => value
  * @param object img_attributes Object of attribute => value
  */
-function the_picture($sources, $img_attributes) {
+function picture($sources, $img_attributes) {
     $picture = '';
 
     /** Init the tag */
@@ -31,7 +31,7 @@ function the_picture($sources, $img_attributes) {
 
     /** Default image with attribute */
     $picture .= html_selfclosed_tag('img', $img_attributes);
-    
+
     /** Close tag */
     $picture .= '</picture>';
 
@@ -48,7 +48,7 @@ function the_picture($sources, $img_attributes) {
  * @param object source_attributes Object of attribute => value
  * @param string default_format Image format (default is jpg)
  */
-function the_picture_webp($path, $name, $attributes, $source_attributes = array(), $default_format = 'jpg') {
+function picture_w($path, $name, $attributes, $source_attributes = array(), $default_format = 'jpg') {
     $sources = array(
         array(
             'srcset' => $path . $name . '.webp',
@@ -65,7 +65,7 @@ function the_picture_webp($path, $name, $attributes, $source_attributes = array(
         array_merge($sources[0], $source_attributes)
     );
 
-    the_picture($sources, $img_attributes);
+    picture($sources, $img_attributes);
 }
 
 
@@ -77,7 +77,7 @@ function the_picture_webp($path, $name, $attributes, $source_attributes = array(
  * @param object attributes Object of attribute => value
  * @param string default_format Image format (default is jpg)
  */
-function the_picture_webp_lazyload($path, $name, $attributes, $default_format = 'jpg') {
+function picture_wl($path, $name, $attributes, $default_format = 'jpg') {
     $attributes_lazy = array(
         'class' => 'lazyload',
         'src' => 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==',
@@ -92,7 +92,7 @@ function the_picture_webp_lazyload($path, $name, $attributes, $default_format = 
     /** Merge attributes */
     $attributes_lazy = array_merge($attributes_lazy, $attributes);
 
-    the_picture_webp($path, $name, $attributes_lazy, $source_attributes, $default_format);
+    picture_w($path, $name, $attributes_lazy, $source_attributes, $default_format);
 }
 
 /**
@@ -103,9 +103,9 @@ function the_picture_webp_lazyload($path, $name, $attributes, $default_format = 
  * @param object attributes Object of attribute => value
  * @param string default_format Image format (default is jpg)
  */
-function the_picture_webp_lazyload_zoom($path, $name, $attributes, $default_format = 'jpg') {
+function picture_wlz($path, $name, $attributes, $default_format = 'jpg') {
     $attributes = array_merge($attributes, array('data-action' => 'zoom'));
 
-    the_picture_webp_lazyload($path, $name, $attributes, $default_format = 'jpg');
+    picture_wl($path, $name, $attributes, $default_format = 'jpg');
 }
 ?>

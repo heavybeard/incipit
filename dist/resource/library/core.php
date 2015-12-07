@@ -19,13 +19,6 @@ require_once 'plugin/useful.php';
 require_once 'plugin/images.php';
 
 
-
-/**
- * GET INFORMATIONS
- * ===========================================================================
- */
-
-
 /**
  * GET ENVIRONMENT
  * Set the current environment
