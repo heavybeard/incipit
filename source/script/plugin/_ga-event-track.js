@@ -42,6 +42,8 @@ var gaEventTrack = function (element, options) {
 
     /** Track scroll */
     var scroll = function (label) {
+        label = (label === null) ? 0 : label;
+
         gaSend('View', 'scroll', label);
     };
 

@@ -23,6 +23,8 @@ function Incipit(extend) {
         stylesheetSelector: e.stylesheetSelector || 'link[rel="stylesheet"]',
         /** string */
         trackerSelector: e.trackerSelector || '[data-event-category]',
+        /** int */
+        trackPercentageFire: e.trackPercentageFire || 25,
     };
 
     /**
@@ -33,6 +35,7 @@ function Incipit(extend) {
     var downloadStyle = function (selector) {
         var DOMstyles = document.querySelectorAll(selector);
 
+        /** On window.load set media to element */
         Array.prototype.forEach.call(DOMstyles, function (element, index) {
             window.addEventListener('load', function () {
                 asyncStyle(element);
@@ -56,6 +59,7 @@ function Incipit(extend) {
     var trackEvent = function (selector) {
         var DOMtrackers = document.querySelectorAll(selector);
 
+        /** Attach click event on each element */
         Array.prototype.forEach.call(DOMtrackers, function (element, index) {
             element.addEventListener('click', function () {
                 gaEventTrack(element);
@@ -66,14 +70,46 @@ function Incipit(extend) {
     /**
      * GA EVENT TRACK SCROLL
      */
-    var trackEventScroll = function () {
+    var trackEventScroll = function (fireHeight) {
+        /** Set currentYPosition */
+        var currentYPosition = window.pageYOffset;
+        /** Store percentage to fire */
+        var percentageFired = {};
+        for (var i = 0; i <= (100 / fireHeight); i++) {
+            percentageFired[fireHeight * i] = false;
+        }
+
+        /** Attach scroll event */
         window.addEventListener('scroll', function() {
-            var heightPercent = document.documentElement.scrollTop || document.body.scrollTop / ((document.documentElement.scrollHeight || document.body.scrollHeight) - document.documentElement.clientHeight) * 100 | 0;
-            if (heightPercent % 10 === 0) {
-                gaEventTrack(document.body, {
-                    label: heightPercent
-                });
+            var currentHeightPercent = document.documentElement.scrollTop || document.body.scrollTop / ((document.documentElement.scrollHeight || document.body.scrollHeight) - document.documentElement.clientHeight) * 100 | 0;
+
+            /** Only scroll down*/
+            if (window.pageYOffset > currentYPosition) {
+                /** Set approx fired percentage */
+                var currentApproxHeightPercentage;
+                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                    currentApproxHeightPercentage = 100;
+                } else {
+                    for (var i = 1; i <= (100 / fireHeight); i++) {
+                        if (currentHeightPercent <= fireHeight * i) {
+                            currentApproxHeightPercentage = fireHeight * i - fireHeight;
+                            break;
+                        }
+                    }
+                }
+
+                /** Track only once */
+                if (!percentageFired[currentApproxHeightPercentage]) {
+                    gaEventTrack(document.body, {
+                        label: currentApproxHeightPercentage
+                    });
+                    /** Set fired */
+                    percentageFired[currentApproxHeightPercentage] = true;
+                }
             }
+
+            /** Set new currentYPosition*/
+            currentYPosition = window.pageYOffset;
         });
     };
 
@@ -87,7 +123,7 @@ function Incipit(extend) {
         zoomjs();
         lazySizes.init();
         trackEvent(option.trackerSelector);
-        trackEventScroll();
+        trackEventScroll(option.trackPercentageFire);
     };
 
     /** INIT */
