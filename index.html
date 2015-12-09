@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Incipit by heavybeard</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Incipit</h1>
+        <p>Framework for init a new project</p>
+
+        <p class="view"><a href="https://github.com/heavybeard/incipit">View the Project on GitHub <small>heavybeard/incipit</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/heavybeard/incipit/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/heavybeard/incipit/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/heavybeard/incipit">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="incipit" class="anchor" href="#incipit" aria-hidden="true"><span class="octicon octicon-link"></span></a>incipit</h1>
+
+<p>This framework is created for init a new web standard project.
+GULP and SCSS frontend based.
+PHP and MySQL backend base.</p>
+
+<blockquote>
+<p><strong>incipit</strong>
+<em>ìn·ci·pit</em>
+In the codes, initial word of the formula
+that is usually placed at the beginning of a work or part thereof</p>
+</blockquote>
+
+<h2>
+<a id="gulp" class="anchor" href="#gulp" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gulp</h2>
+
+<p>The Gulp file's architeture is composed by</p>
+
+<pre><code>::ROOT
+├── gulp
+│   ├── task
+│   │   ├── base
+│   │   │   ├── compileStyle.js
+│   │   │   ├── concatScript.js
+│   │   │   ├── optimizeImage.js
+│   │   │   └── uglifyScript.js
+│   │   ├── useful
+│   │   │   ├── clean.js
+│   │   │   └── watch.js
+│   │   ├── default.js
+│   │   ├── dev.js
+│   │   └── dist.js
+│   └── config.js
+├── node_modules
+│   ├── module 1
+│   ├── ...
+│   └── module n
+├── package.json
+└── gulpfile.js
+</code></pre>
+
+<h2>
+<a id="virtual-host" class="anchor" href="#virtual-host" aria-hidden="true"><span class="octicon octicon-link"></span></a>Virtual Host</h2>
+
+<p>This is an example code for configurate your web project VH</p>
+
+<h3>
+<a id="host-os" class="anchor" href="#host-os" aria-hidden="true"><span class="octicon octicon-link"></span></a>Host OS</h3>
+
+<p>In Windows you can find the file in this path <code>C:\Windows\System32\drivers\etc\hosts</code></p>
+
+<pre><code>127.0.0.1       www.webproject.dom
+127.0.0.1           webproject.dom
+</code></pre>
+
+<h3>
+<a id="vhost-in-web-server" class="anchor" href="#vhost-in-web-server" aria-hidden="true"><span class="octicon octicon-link"></span></a>Vhost in Web Server</h3>
+
+<p>In Windows with XAMPP you can find the file in this path <code>C:\xampp\apache\conf\extra\httpd-vhosts.conf</code></p>
+
+<pre><code>## WEBPROJECT
+&lt;VirtualHost www.webproject.dom:80&gt;
+    DocumentRoot "C:/xampp/htdocs/webprojectfolder/dist/public_html"
+    ServerName www.webproject.dom
+    ServerAlias www.webproject.dom
+    &lt;Directory "C:/xampp/htdocs/webprojectfolder/dist/public_html"&gt;
+        Order allow,deny
+        Allow from all
+    &lt;/Directory&gt;
+&lt;/VirtualHost&gt;
+&lt;VirtualHost webproject.dom:80&gt;
+    DocumentRoot "C:/xampp/htdocs/webprojectfolder/dist/public_html"
+    ServerName webproject.dom
+    ServerAlias webproject.dom
+    &lt;Directory "C:/xampp/htdocs/webprojectfolder/dist/public_html"&gt;
+        Order allow,deny
+        Allow from all
+    &lt;/Directory&gt;
+&lt;/VirtualHost&gt;
+</code></pre>
+
+<h2>
+<a id="seo" class="anchor" href="#seo" aria-hidden="true"><span class="octicon octicon-link"></span></a>SEO</h2>
+
+<h3>
+<a id="open-graph" class="anchor" href="#open-graph" aria-hidden="true"><span class="octicon octicon-link"></span></a>Open Graph</h3>
+
+<p>For create the Open Graph structure for better SEO and social sharing, use this <a href="http://www.metataggenerator.org/open-graph-meta-tags/">simple tool</a></p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/heavybeard">heavybeard</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
