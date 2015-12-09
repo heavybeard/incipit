@@ -4,7 +4,7 @@
  * @see https://github.com/spinningarrow/zoom-vanilla.js/
  */
 
-+function () { "use strict";
+function zoomjs() { "use strict";
   var scrollHandlerFn;
   var clickHandlerFn;
   var keyHandlerFn;
@@ -253,4 +253,4 @@
 
   new ZoomService().listen()
 
-}()
+};
