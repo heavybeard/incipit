@@ -4,7 +4,7 @@
  * @see https://github.com/spinningarrow/zoom-vanilla.js/
  */
 
-function zoomjs() { "use strict";
++function () { "use strict";
   var scrollHandlerFn;
   var clickHandlerFn;
   var keyHandlerFn;
@@ -219,6 +219,8 @@ function zoomjs() { "use strict";
 
     this._targetImage.style.transform = 'scale(' + this._imgScaleFactor + ')'
     this._targetImageWrap.style.transform = 'translate(' + this._translateX + 'px, ' + this._translateY + 'px) translateZ(0)'
+    this._targetImage.style.webkitTransform = 'scale(' + this._imgScaleFactor + ')'
+    this._targetImageWrap.style.webkitTransform = 'translate(' + this._translateX + 'px, ' + this._translateY + 'px) translateZ(0)'
 
     this._body.classList.add('zoom-overlay-open')
   }
@@ -230,8 +232,11 @@ function zoomjs() { "use strict";
     // we use setStyle here so that the correct vender prefix for transform is used
     this._targetImage.style.transform = ''
     this._targetImageWrap.style.transform = ''
+    this._targetImage.style.webkitTransform = ''
+    this._targetImageWrap.style.webkitTransform = ''
 
-  this._targetImage.addEventListener('transitionend', this.dispose.bind(this))
+    this._targetImage.addEventListener('transitionend', this.dispose.bind(this))
+    this._targetImage.addEventListener('webkitTransitionEnd', this.dispose.bind(this))
   }
 
   Zoom.prototype.dispose = function () {
@@ -248,4 +253,4 @@ function zoomjs() { "use strict";
 
   new ZoomService().listen()
 
-};
+}()
