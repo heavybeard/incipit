@@ -69,9 +69,11 @@ function Incipit(extend) {
 
     /**
      * GA EVENT TRACK SCROLL
+     * @description Track scroll in different fire points
+     * @param double fireHeight The height for calculate fire point (max 100)
      */
-    var trackEventScroll = function (firePoint) {
-        gaScrollPercentageEventTrack(document.body, firePoint);
+    var trackEventScroll = function (fireHeight) {
+        gaScrollPercentageEventTrack(document.body, fireHeight);
     };
 
     /**
