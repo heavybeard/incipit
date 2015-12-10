@@ -11,3 +11,6 @@ node_modules
 sftp-config.json
 database.php
 password.php
+
+# ignore generated assets
+dist/public_html/asset/
