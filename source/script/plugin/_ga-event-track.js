@@ -9,10 +9,11 @@ var gaEventTrack = function (element, options) {
     'use strict';
 
     var eventTrack = {
-        category: element.getAttribute('data-event-category') || 'scroll',
+        category: element.getAttribute('data-event-category'),
         action: element.getAttribute('data-event-action'),
-        label: element.getAttribute('data-event-label') || options.label || element.getAttribute('title') || element.getAttribute('href') ,
+        label: element.getAttribute('data-event-label') || element.getAttribute('title') || element.getAttribute('href') ,
     };
+    eventTrack = extend(eventTrack, options);
 
     /** 
      * Track default
@@ -43,7 +44,6 @@ var gaEventTrack = function (element, options) {
     /** Track scroll */
     var scroll = function (label) {
         label = (label === null) ? 0 : label;
-
         gaSend('View', 'scroll', label);
     };
 
