@@ -70,47 +70,8 @@ function Incipit(extend) {
     /**
      * GA EVENT TRACK SCROLL
      */
-    var trackEventScroll = function (fireHeight) {
-        /** Set currentYPosition */
-        var currentYPosition = window.pageYOffset;
-        /** Store percentage to fire */
-        var percentageFired = {};
-        for (var i = 0; i <= (100 / fireHeight); i++) {
-            percentageFired[fireHeight * i] = false;
-        }
-
-        /** Attach scroll event */
-        window.addEventListener('scroll', function() {
-            var currentHeightPercent = document.documentElement.scrollTop || document.body.scrollTop / ((document.documentElement.scrollHeight || document.body.scrollHeight) - document.documentElement.clientHeight) * 100 | 0;
-
-            /** Only scroll down*/
-            if (window.pageYOffset > currentYPosition) {
-                /** Set approx fired percentage */
-                var currentApproxHeightPercentage;
-                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-                    currentApproxHeightPercentage = 100;
-                } else {
-                    for (var i = 1; i <= (100 / fireHeight); i++) {
-                        if (currentHeightPercent <= fireHeight * i) {
-                            currentApproxHeightPercentage = fireHeight * i - fireHeight;
-                            break;
-                        }
-                    }
-                }
-
-                /** Track only once */
-                if (!percentageFired[currentApproxHeightPercentage]) {
-                    gaEventTrack(document.body, {
-                        label: currentApproxHeightPercentage
-                    });
-                    /** Set fired */
-                    percentageFired[currentApproxHeightPercentage] = true;
-                }
-            }
-
-            /** Set new currentYPosition*/
-            currentYPosition = window.pageYOffset;
-        });
+    var trackEventScroll = function (firePoint) {
+        gaScrollPercentageEventTrack(document.body, firePoint);
     };
 
     /**

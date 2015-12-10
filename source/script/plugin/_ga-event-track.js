@@ -63,3 +63,56 @@ var gaEventTrack = function (element, options) {
             break;
     }
 };
+
+/**
+ * GA SCROLL PERCENTAGE EVENT TRACK
+ * @description Plugin for tracking scroll event on selected fire points
+ * @see https://developers.google.com/analytics/devguides/collection/analyticsjs/events
+ * @param object elementToScroll The DOM element to scroll
+ * @param double fireHeight The percentage on send event track
+ */
+var gaScrollPercentageEventTrack = function (elementToScroll, fireHeight) {
+    'use strict';
+
+    /** Set currentYPosition */
+    var currentYPosition = window.pageYOffset;
+    /** Store percentage to fire */
+    var firePoints = {};
+    for (var i = 0; i <= (100 / fireHeight); i++) {
+        firePoints[fireHeight * i] = false;
+    }
+
+    /** Attach scroll event */
+    window.addEventListener('scroll', function () {
+        /** Only scroll down*/
+        if (window.pageYOffset > currentYPosition) {
+            /** Set current height in percent */
+            var currentHeightPercent = document.documentElement.scrollTop || document.body.scrollTop / ((document.documentElement.scrollHeight || document.body.scrollHeight) - document.documentElement.clientHeight) * 100 | 0;
+
+            /** Set approx fired percentage from the current height in percentage */
+            var currentApproxHeightPercentage;
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                currentApproxHeightPercentage = 100;
+            } else {
+                for (var i = 1; i <= (100 / fireHeight); i++) {
+                    if (currentHeightPercent <= fireHeight * i) {
+                        currentApproxHeightPercentage = fireHeight * i - fireHeight;
+                        break;
+                    }
+                }
+            }
+
+            /** Track only once */
+            if (!firePoints[currentApproxHeightPercentage]) {
+                gaEventTrack(elementToScroll, {
+                    label: currentApproxHeightPercentage
+                });
+                /** Set fired */
+                firePoints[currentApproxHeightPercentage] = true;
+            }
+        }
+
+        /** Set new currentYPosition*/
+        currentYPosition = window.pageYOffset;
+    });
+};
