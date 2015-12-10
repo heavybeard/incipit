@@ -24,5 +24,5 @@
 
         <?php rq_part('require', 'webapp'); ?>
     </head>
-    <body>
+    <body data-event-category="scroll">
         <div id="container">
