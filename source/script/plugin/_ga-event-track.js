@@ -59,7 +59,7 @@ var gaEventTrack = function (element, options) {
             scroll(eventTrack.label);
             break;
         default:
-            base(eventTrack.category, eventTrack.action, eventTrack.label);
+            gaSend(eventTrack.category, eventTrack.action, eventTrack.label);
             break;
     }
 };
