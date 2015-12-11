@@ -29,6 +29,10 @@ defined('JSON_PATH')
     or define('JSON_PATH', '/asset/json/');
 defined('IMG_PATH')
     or define('IMG_PATH', '/asset/image/');
+defined('VIDEO_PATH')
+    or define('VIDEO_PATH', '/asset/video/');
+defined('OBJ_PATH')
+    or define('OBJ_PATH', '/asset/object/');
 
 /** WEBAPP PUBLIC_HTML */
 defined('WEBAPP_ICON_PATH')
