@@ -12,5 +12,7 @@ gulp.task('clean', function () {
         config.path.style.asset,
         config.path.script.asset,
         config.path.image.asset,
+        config.path.video.asset,
+        config.path.font.asset,
     ]);
 });

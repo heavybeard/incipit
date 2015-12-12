@@ -11,7 +11,9 @@ gulp.task('dist', [
     gulp.start([
         'uglifyScript',
         'compileStyle',
-        'optimizeImage'
+        'optimizeImage',
+        'copyVideo',
+        'copyFont'
     ], function () {
         gulp.start([
             'webpImage'
