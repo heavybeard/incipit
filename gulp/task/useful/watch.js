@@ -12,7 +12,7 @@ gulp.task('watch', function () {
     gulp.watch(config.path.style.source + '/**/*.scss', ['compileStyle']);
     gulp.watch(config.path.script.source + '/**/*.js', ['concatScript']);
     gulp.watch(config.path.image.source + '/**', ['optimizeImage']);
-    gulp.watch(config.path.video.source + '/**/*.{jpg,png}', ['optimizeImage']);
-    gulp.watch([config.path.video.source + '/**/*', '!' + config.path.video.source + '/**/*.{jpg|png}'], ['copyVideo']);
+    gulp.watch(config.path.video.source + '/**/*.{jpg,png}', ['optimizeImagePoster']);
+    gulp.watch([config.path.video.source + '/**/*', '!' + config.path.video.source + '/**/*.{jpg,png}'], ['copyVideo']);
     gulp.watch(config.path.font.source + '/**/*', ['copyFont']);
 });

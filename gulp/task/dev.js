@@ -9,8 +9,8 @@ gulp.task('dev', [
     'concatScript',
     'compileStyle',
     'optimizeImage',
-    'copyVideo',
-    'copyFont'
+    'compileVideo',
+    'compileFont'
 ], function () {
     gulp.start([
         'webpImage'
