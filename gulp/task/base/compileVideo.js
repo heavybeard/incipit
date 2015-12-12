@@ -27,8 +27,8 @@ gulp.task('optimizeImagePoster', function () {
 
 /** Copy Video */
 gulp.task('compileVideo', ['optimizeImagePoster'], function () {
-    return gulp.src([config.path.video.source + '/**/*', '!' + config.path.video.source + '/**/*.{jpg,png}'])
-        .pipe(changed(config.path.video.asset))
+    return gulp.src([config.path.video.source + '/**/*.*', '!' + config.path.video.source + '/**/*.{jpg,png}'])
+        .pipe(changed(config.path.video.asset + '/**/*'))
         .pipe(notify({
             title: '<%= file.relative %>',
             message: 'File copied',
