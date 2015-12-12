@@ -1,6 +1,6 @@
 /**
  * GULP DIST
- * @description Clean all asset files; concat than uglify scripts; compile Sass
+ * @description Task for distribution
  */
 
 var gulp = require('gulp');

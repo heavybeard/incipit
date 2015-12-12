@@ -1,6 +1,6 @@
 /**
  * GULP DEV
- * @description Concat scripts and compile styles
+ * @description Task for development
  */
 
 var gulp = require('gulp');
