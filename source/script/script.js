@@ -57,7 +57,7 @@ function Incipit(extend) {
      * @param string selector
      */
     var trackEvent = function (selector) {
-        var DOMtrackers = document.querySelectorAll(selector);
+        var DOMtrackers = document.body.querySelectorAll(selector);
 
         /** Attach click event on each element */
         Array.prototype.forEach.call(DOMtrackers, function (element, index) {
