@@ -10,7 +10,7 @@ var gulp = require('gulp'),
     notify = require("gulp-notify");
 
 gulp.task('copyVideo', function () {
-    return gulp.src(config.path.video.source + '/**/*')
+    return gulp.src([config.path.video.source + '/**/*', '!' + config.path.video.source + '/**/*.{jpg,png}'])
         .pipe(changed(config.path.video.asset))
         .pipe(notify({
             title: '<%= file.relative %>',
