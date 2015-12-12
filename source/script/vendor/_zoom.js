@@ -72,7 +72,7 @@ function zoomjs() {
         if (this._body.classList.contains('zoom-overlay-open'))
             return;
         if (e.metaKey || e.ctrlKey)
-            return window.open((e.target.getAttribute('data-original') || e.target.src), '_blank');
+            return window.open((e.target.getAttribute('data-original') || e.target.currentSrc || e.target.src), '_blank');
         if (target.width >= (window.innerWidth - Zoom.OFFSET))
             return;
 
@@ -202,7 +202,7 @@ function zoomjs() {
             this._fullWidth = Number(img.width);
             this._zoomOriginal();
         }.bind(this);
-        img.src = this._targetImage.src;
+        img.src = this._targetImage.currentSrc || this._targetImage.src;
     }
 
     /**
