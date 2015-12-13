@@ -25,6 +25,8 @@ function Incipit(extend) {
         trackerSelector: e.trackerSelector || '[data-event-category]',
         /** int */
         trackPercentageFire: e.trackPercentageFire || 25,
+        /** string */
+        videoSelector: e.videoSelector || 'video',
     };
 
     /**
@@ -49,6 +51,22 @@ function Incipit(extend) {
      */
     var pictureFill = function () {
         document.createElement('picture');
+    };
+
+    /**
+     * VIDEO PLAYER
+     * @description Init VideoJS for custom player
+     */
+    var videoPlayer = function (selector) {
+        /** Remove Cookie for improve */
+        window.HELP_IMPROVE_VIDEOJS = false;
+
+        var DOMvideos = document.body.querySelectorAll(selector);
+
+        /** Init */
+        Array.prototype.forEach.call(DOMvideos, function (element, index) {
+            videojs(element);
+        });
     };
 
     /**
@@ -87,6 +105,7 @@ function Incipit(extend) {
         lazySizes.init();
         trackEvent(option.trackerSelector);
         trackEventScroll(option.trackPercentageFire);
+        videoPlayer();
     };
 
     /** INIT */

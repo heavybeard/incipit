@@ -1,6 +1,6 @@
 /**
  * VIDEO JS
- * @description Custom player video adn audio
+ * @description Custom player video and audio
  * @see http://videojs.com/
  */
 
