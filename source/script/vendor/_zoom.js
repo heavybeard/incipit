@@ -67,8 +67,9 @@ function zoomjs() {
     ZoomService.prototype._zoom = function (e) {
         var target = e.target
 
-        if (!target || target.tagName !== 'IMG')
+        if (!target || target.tagName !== 'IMG' && target.tagName !== 'VIDEO') {
             return;
+        }
         if (this._body.classList.contains('zoom-overlay-open'))
             return;
         if (e.metaKey || e.ctrlKey)
@@ -78,7 +79,10 @@ function zoomjs() {
 
         this._activeZoomClose(true);
         this._activeZoom = new Zoom(target);
-        this._activeZoom.zoomImage();
+        if (target.tagName === 'IMG')
+            this._activeZoom.zoomImage();
+        else if (target.tagName === 'VIDEO')
+            this._activeZoom.zoomVideo();
 
         scrollHandlerFn = this._scrollHandler.bind(this);
         clickHandlerFn = this._clickHandler.bind(this);
@@ -206,6 +210,25 @@ function zoomjs() {
     }
 
     /**
+     * ZOOM VIDEO
+     */
+    Zoom.prototype.zoomVideo = function () {
+        var video = document.createElement('video'),
+            source = document.createElement('source'),
+            thistarget = this;
+
+        video.appendChild(source);
+
+        video.addEventListener('canplay', function() {
+            thistarget._fullHeight = Number(video.videoHeight);
+            thistarget._fullWidth = Number(video.videoWidth);
+            thistarget._zoomOriginal();
+            thistarget._targetImage.play();
+        }, false);
+        source.src = this._targetImage.currentSrc || this._targetImage.src;
+    }
+
+    /**
      * ZOOM ORIGINAL
      */
     Zoom.prototype._zoomOriginal = function () {
@@ -237,7 +260,7 @@ function zoomjs() {
         var originalFullImageWidth = this._fullWidth,
             originalFullImageHeight = this._fullHeight;
         var scrollTop = window.scrollY;
-        var maxScaleFactor = originalFullImageWidth / this._targetImage.width;
+        var maxScaleFactor = originalFullImageWidth / (this._targetImage.width || this._targetImage.videoWidth);
         var viewportHeight = (window.innerHeight - Zoom.OFFSET),
             viewportWidth = (window.innerWidth - Zoom.OFFSET);
         var imageAspectRatio = originalFullImageWidth / originalFullImageHeight,
@@ -264,8 +287,8 @@ function zoomjs() {
         var viewportY = scrollTop + (window.innerHeight / 2),
             viewportX = (window.innerWidth / 2);
 
-        var imageCenterY = imageOffset.top + (this._targetImage.height / 2),
-            imageCenterX = imageOffset.left + (this._targetImage.width / 2);
+        var imageCenterY = imageOffset.top + ((this._targetImage.height || this._targetImage.offsetHeight) / 2),
+            imageCenterX = imageOffset.left + ((this._targetImage.width || this._targetImage.offsetWidth) / 2);
 
         this._translateY = viewportY - imageCenterY;
         this._translateX = viewportX - imageCenterX;
@@ -307,6 +330,9 @@ function zoomjs() {
             this._overlay.parentNode.removeChild(this._overlay);
 
             this._body.classList.remove('zoom-overlay-transitioning');
+
+            if (this._targetImage.tagName === 'VIDEO' && this._targetImage.getAttribute('data-play'))
+                this._targetImage.play();
         }
     }
 
