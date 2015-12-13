@@ -12,7 +12,13 @@ var gulp = require('gulp'),
 
 gulp.task('concatScript', function () {
     return gulp.src([
-            config.path.script.source + '/vendor/_example.js',
+            config.path.script.source + '/vendor/_extend.js',
+            config.path.script.source + '/vendor/_picturefill.js',
+            config.path.script.source + '/vendor/_videojs.js',
+            config.path.script.source + '/vendor/_lazysizes.js',
+            config.path.script.source + '/vendor/_zoom.js',
+            config.path.script.source + '/plugin/_async-style.js',
+            config.path.script.source + '/plugin/_ga-event-track.js',
             config.path.script.source + '/script.js',
         ])
         .pipe(maps.init())

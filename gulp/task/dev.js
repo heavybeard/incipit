@@ -1,6 +1,6 @@
 /**
  * GULP DEV
- * @description Concat scripts and compile styles
+ * @description Task for development
  */
 
 var gulp = require('gulp');
@@ -9,5 +9,10 @@ gulp.task('dev', [
     'concatScript',
     'compileStyle',
     'optimizeImage',
-    'webpImage'
-]);
+    'compileVideo',
+    'compileFont'
+], function () {
+    gulp.start([
+        'webpImage'
+    ]);
+});

@@ -20,6 +20,14 @@ module.exports = {
             source: 'source/image',
             asset:  'dist/public_html/asset/image',
         },
+        video: {
+            source: 'source/video',
+            asset:  'dist/public_html/asset/video',
+        },
+        font: {
+            source: 'source/font',
+            asset:  'dist/public_html/asset/font',
+        },
         sourcemap: 'sourcemaps',
     },
 };
