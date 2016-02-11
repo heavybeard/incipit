@@ -14,4 +14,3 @@ password.php
 
 # ignore generated assets
 dist/public_html/asset/
-source/video/
